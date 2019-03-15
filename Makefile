@@ -1,4 +1,4 @@
-IMPORT_PATH=gitlab.inria.fr/lobonnio/pnyxdb
+IMPORT_PATH=github.com/technicolor-research/pnyxdb
 
 protoc:
 	@protoc --go_out=. consensus/*.proto

@@ -6,7 +6,8 @@ This program is highly experimental and should not be used in production.
 
 ## Installation
 
-Pnyxdb requires Go 1.10+
+Pnyxdb requires Go 1.11+ for module support.
+It is highly suggested to clone that project *outside* your GOPATH to install supported dependencies automatically.
 
 ```
 go get ./...
@@ -82,7 +83,7 @@ INFO	Listening	{"type": "API", "address": "127.0.0.1:4200"}
 ```
 
 Here, P2P endpoints are printed for each available interface.
-Copy thoses addresses, including the hash of public keys, and send them to your peers!
+Copy those addresses, including the hash of public keys, and send them to your peers!
 They can be put in the `p2p.peers` section of the configuration file.
 
 Ok, so let's say that you managed to setup a cluster by connecting your nodes.
