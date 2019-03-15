@@ -1,0 +1,74 @@
+/**
+ * Copyright (c) 2019 - Present – Thomson Licensing, SAS
+ * All rights reserved.
+ *
+ * This source code is licensed under the Clear BSD license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+syntax = "proto3";
+
+package consensus;
+import "google/protobuf/timestamp.proto";
+
+message Version {
+	bytes hash = 1;
+}
+
+message Query {
+	string uuid = 1;
+	string policy = 2;
+	string emitter = 3;
+	google.protobuf.Timestamp deadline = 4;
+	map<string, Version> requirements = 5;
+	repeated Operation operations = 6;
+
+	bytes signature = 16;
+}
+
+message Operation {
+	string key = 1;
+	enum Op {
+		// Operations on every values
+		SET = 0;
+		CONCAT = 1;
+		// Operations on numeric values
+		ADD = 10;
+		MUL = 11;
+		// Operations on set values
+		SADD = 20;
+		SREM = 21;
+	}
+	Op op = 2;
+	bytes data = 3;
+	bytes metadata = 4;
+}
+
+message Endorsement {
+	string uuid = 1;
+	string emitter = 2;
+	repeated string conditions = 3;
+
+	bytes signature = 16;
+}
+
+message StartCheckpoint {
+	repeated string queries = 1;
+}
+
+message Proof {
+	oneof content {
+		Query query = 1;
+		Endorsement endorsement = 2;
+	}
+}
+
+message RecoveryRequest {
+	string key = 1;
+}
+
+message RecoveryResponse {
+	string key = 1;
+	Version version = 2;
+	bytes data = 3;
+}

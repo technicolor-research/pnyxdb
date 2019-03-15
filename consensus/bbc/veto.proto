@@ -1,0 +1,22 @@
+/**
+ * Copyright (c) 2019 - Present – Thomson Licensing, SAS
+ * All rights reserved.
+ *
+ * This source code is licensed under the Clear BSD license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+syntax = "proto3";
+
+package bbc;
+import "consensus/structures.proto";
+
+message Choice {
+	string identifier = 1;
+	string emitter = 2;
+	bool choice = 3;
+
+	repeated consensus.Proof proofs = 4;
+
+	bytes signature = 16;
+}
