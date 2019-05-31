@@ -109,3 +109,6 @@ e7dc2197-1c65-4416-9fd2-10a92e0913e3
 127.0.0.1:4200> GET myVar
 54
 ```
+## License
+This project is licensed under the terms of BSD 3-clause Clear license.
+by downloading this program, you commit to comply with the license as stated in the LICENSE.md file.
